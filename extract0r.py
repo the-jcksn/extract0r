@@ -27,8 +27,8 @@ print("██╔══╝░░░██╔██╗░░░░██║░░�
 print("███████╗██╔╝╚██╗░░░██║░░░██║░░██║██║░░██║╚█████╔╝░░░██║░░░╚█████╔╝██║░░██║")
 print("╚══════╝╚═╝░░╚═╝░░░╚═╝░░░╚═╝░░╚═╝╚═╝░░╚═╝░╚════╝░░░░╚═╝░░░░╚════╝░╚═╝░░╚═╝")
 print("                    \"Keeping only the good bits\"")
-print("                         github.com/the_jcksn\n")
-#initial menu, takin user input and assigning to selection
+print("                         github.com/the-jcksn\n")
+#initial menu, taking user input and assigning to selection
 selection = ""
 while selection != "q":
         print("[+] Please choose from the following:\n")
@@ -95,6 +95,7 @@ while selection != "q":
                                 output.write("\n")
                 extraction_end(output_file)
                 selection = more_extractions()
+                
         #if selection is username from sam file
         elif selection == "3":
                 print("\n[+] Extracting the Usernames from a sam file")
@@ -126,7 +127,6 @@ while selection != "q":
                         with open(output_file, "a") as output:
                                 output.write(d)
                                 output.write("\n")
-
                 extraction_end(output_file)
                 selection = more_extractions()
 
