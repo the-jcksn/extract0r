@@ -1,6 +1,6 @@
 #defining the functions
 
-#function to continue after one extraction or quit
+#continue after extraction or quit
 def more_extractions():
         more = input("\n[?] Would you like to perform further extractions? (y/n): ")
         while more != "y" and more != "n":
@@ -11,6 +11,12 @@ def more_extractions():
         else:
                 answer = "q"
         return(answer)
+
+#end of extraction
+def extraction_end(output_file):
+        print("\n[+] Results saved in",output_file)
+        input_file.close()
+        output.close()
 
 
 #fancy banner shit
@@ -56,10 +62,7 @@ while selection != "q":
                 for i in ips:
                         with open(output_file, "a") as output:
                                 output.write(i)
-                print("\n[+] Results saved in",output_file)
-                #close files and call more_extractions
-                input_file.close()
-                output.close()
+                extraction_end(output_file)
                 selection = more_extractions()
                 
         #if selection is lm hashes
@@ -90,9 +93,7 @@ while selection != "q":
                         with open(output_file, "a") as output:
                                 output.write(newline)
                                 output.write("\n")
-                print("\n[+] Results saved in",output_file)
-                input_file.close()
-                output.close()
+                extraction_end(output_file)
                 selection = more_extractions()
         #if selection is username from sam file
         elif selection == "3":
@@ -126,9 +127,7 @@ while selection != "q":
                                 output.write(d)
                                 output.write("\n")
 
-                print("\n[+] Results saved in",output_file)
-                input_file.close()
-                output.close()
+                extraction_end(output_file)
                 selection = more_extractions()
 
 
