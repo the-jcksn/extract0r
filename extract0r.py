@@ -37,10 +37,11 @@ while selection != "q":
         print("[1]      - Extract IP addresses from standard nmap output file")
         print("[2]      - Extract the LM hashes from standard windows sam file")
         print("[3]      - Extract username list from standard windows sam file (duplicates removed)")
+        print("[4]      - Extract all unique lines from any file (remove duplicate lines)")
         print("[q]      - Quit extract0r")
         selection = input("Please choose option (1 - 3) or 'q' to quit: ")
         # checking that selection has been made appropriately
-        while selection != "1" and selection != "2" and selection != "3" and selection != "q":
+        while selection != "1" and selection != "2" and selection != "3" and selection != "4" and selection != "q":
                 print("[!] Invalid selection: Please try again")
                 selection = input("Please choose option (1 - 2) or 'q' to quit : ")
 
@@ -157,6 +158,30 @@ while selection != "q":
                         with open(output_file, "a") as output:
                                 output.write(d)
                                 output.write("\n")
+                extraction_end(output_file)
+                selection = more_extractions()
+
+        #if selection is unique lines
+        elif selection == "4":
+                print("\n[+] Extracting unique lines from file (removing duplicate lines)")
+                #collect the inputs
+                filename = input("\n[?] Please enter filename to extract from: ")
+                input_file = open(filename, "r")
+                output_file = input("[?] Please choose a filename for the output: ")
+                #initialise empty lists
+                dupes = []
+                no_dupes = []
+                for line in input_file:
+                        dupes.append(line)
+                #check for duplicates and add unique lines to no_dupes
+                for i in dupes:
+                        if i not in no_dupes:
+                                no_dupes.append(i)
+                #write no_dupes to output  file
+                for d in no_dupes:
+                        with open(output_file, "a") as output:
+                                output.write(d)
+                #end of extraction functions
                 extraction_end(output_file)
                 selection = more_extractions()
 
