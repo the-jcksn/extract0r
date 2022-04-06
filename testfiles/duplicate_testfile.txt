@@ -1,0 +1,11 @@
+This line is duplicated 5 times in the input file, and should only appear once in the output.
+This line is unique (001) and should appear in the output file.
+This line is duplicated 5 times in the input file, and should only appear once in the output.
+This line is unique (002) and should appear in the output file.
+This line is duplicated 5 times in the input file, and should only appear once in the output.
+This line is unique (003) and should appear in the output file.
+This line is duplicated 5 times in the input file, and should only appear once in the output.
+This line is unique (004) and should appear in the output file.
+This line is duplicated 5 times in the input file, and should only appear once in the output.
+This line is unique (005) and should appear in the output file.
+The output file should contain 7 lines including this one.
