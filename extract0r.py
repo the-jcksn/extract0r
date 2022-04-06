@@ -1,3 +1,5 @@
+#extract0r - a tool for automating the boring daily copy and paste text extractions. Written by the-jcksn, to save me time when colleagues give me the tasks they don't want to do.
+
 #defining the functions
 
 #continue after extraction or quit
@@ -52,19 +54,47 @@ while selection != "q":
                 #initialise the string to remove and the empty ip list
                 string = "Nmap scan report for "
                 ips = []
+                ip_exclude = []
+                results = []
                 #iterate the input file and check for the string
                 for line in input_file:
                         if string in line:
                                 #remove the string and add remaining to ip list
                                 newline = line.replace(string,"")
+                                newline = newline.replace("\n","")
                                 ips.append(newline)
-                #add ips in list to output file
+                #removing any excluded ip addresses from the results
+                exclusion = input("[?] Would you like to exclude any specific IP addresses from the results? (y/n): ")
+                #requesting if any IPs want excluding, checking input is y or n
+                while exclusion != "y" and exclusion != "n":
+                        print("[!] Invalid selection: Please try again")
+                        exclusion = input("[?] Would you like to exclude any specific IP addresses from the output? (y/n): ")
+                #gather IP addresses to exclude and add to ip_exclude list
+                if exclusion == "y":
+                        excluded = input("[?] Please enter the first IP address to exclude: ")
+                        ip_exclude.append(excluded)
+                        while excluded != "f":
+                                excluded = input("[?] Please enter the next IP address to exclude, or type 'f' to finish: ")
+                                if excluded != "f":
+                                        ip_exclude.append(excluded)
+                        #printing the IPs to exclude and aligning data format with other list
+                        print("[+] Excluding the following IP addresses from the output:")
+                        for i in ip_exclude:
+                                print(i)
+                        for i in ip_exclude:
+                                i = i.replace("\n","")
+                #checking ip list for any in the exclude list
                 for i in ips:
+                        if i not in ip_exclude:
+                                results.append(i)
+                #save results to file and run end of section commands
+                for i in results:
                         with open(output_file, "a") as output:
                                 output.write(i)
+                                output.write("\n")
                 extraction_end(output_file)
                 selection = more_extractions()
-                
+
         #if selection is lm hashes
         elif selection == "2":
                 print("\n[+] Extracting the LM hashes from a sam file")
@@ -129,6 +159,5 @@ while selection != "q":
                                 output.write("\n")
                 extraction_end(output_file)
                 selection = more_extractions()
-
 
 print("\n[!] Quitting extract0r")
