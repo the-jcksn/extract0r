@@ -1,0 +1,32 @@
+# Nmap 7.92 scan initiated Tue Apr  5 04:39:30 2022 as: nmap -sn -oN nmap_test 192.168.0.1/24
+Nmap scan report for 192.168.0.1
+Host is up (0.0021s latency).
+MAC Address: 48:D3:43:8E:68:D8 (test_device_1)
+Nmap scan report for 192.168.0.2
+Host is up (0.010s latency).
+MAC Address: 80:7D:3A:2B:F9:2A (test_device_2)
+Nmap scan report for 192.168.0.3
+Host is up (1.7s latency).
+MAC Address: EC:FA:BC:2B:3D:F6 (test_device_3)
+Nmap scan report for 192.168.0.4
+Host is up (0.081s latency).
+MAC Address: 80:7D:3A:2B:6D:90 (test_device_4)
+Nmap scan report for 192.168.0.5
+Host is up (0.078s latency).
+MAC Address: 68:9A:87:34:77:0F (test_device_5)
+Nmap scan report for 192.168.0.6
+Host is up (0.010s latency).
+MAC Address: 48:E1:E9:12:A9:2D (test_device_6)
+Nmap scan report for 192.168.0.7
+Host is up (0.99s latency).
+MAC Address: A6:CF:53:F1:79:D4 (test_device_7)
+Nmap scan report for 192.168.0.8
+Host is up (0.098s latency).
+MAC Address: 4C:3B:DF:26:32:FE (test_device_8)
+Nmap scan report for 192.168.0.9
+Host is up (0.024s latency).
+MAC Address: E8:DA:24:58:C8:69 (test_device_9)
+Nmap scan report for 192.168.0.10
+Host is up (0.00024s latency).
+MAC Address: 28:3E:26:59:6A:95 (test_device_10)
+# Nmap done at Tue Apr  5 04:39:36 2022 -- 256 IP addresses (10 hosts up) scanned in 5.98 seconds
