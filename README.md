@@ -1,6 +1,6 @@
 # extract0r
 
-Script for extracting information from files.
+Python script for extracting information from files.
 
 Currently has 4 options:
 
@@ -10,4 +10,4 @@ Currently has 4 options:
 4)  Extracts unique lines from any file, thereby removing the duplicates in the file. Saves the unique lines to a newly created file for further use.
 
 
-The two testfiles are not necessary for the script to function, they are there purely for testing out parts of the script and learning how it maniplulates the data in input files. 
+The testfiles are not necessary for the script to function, they are there purely for testing out parts of the script and learning how it maniplulates the data in input files. 
