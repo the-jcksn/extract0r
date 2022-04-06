@@ -39,11 +39,11 @@ while selection != "q":
         print("[3]      - Extract username list from standard windows sam file (duplicates removed)")
         print("[4]      - Extract all unique lines from any file (remove duplicate lines)")
         print("[q]      - Quit extract0r")
-        selection = input("Please choose option (1 - 3) or 'q' to quit: ")
+        selection = input("Please choose option (1 - 4) or 'q' to quit: ")
         # checking that selection has been made appropriately
         while selection != "1" and selection != "2" and selection != "3" and selection != "4" and selection != "q":
                 print("[!] Invalid selection: Please try again")
-                selection = input("Please choose option (1 - 2) or 'q' to quit : ")
+                selection = input("Please choose option (1 - 4) or 'q' to quit : ")
 
         #if ip extract has been selected
         if selection == "1":
