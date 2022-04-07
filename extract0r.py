@@ -34,7 +34,7 @@ print("                         github.com/the-jcksn\n")
 selection = ""
 while selection != "q":
         print("[+] Please choose from the following:\n")
-        print("[1]      - Extract email addresses from any file")
+        print("[1]      - Extract email addresses from any standard text file")
         print("[2]      - Extract IP addresses from standard nmap output file")
         print("[3]      - Extract the LM hashes from standard windows sam file")
         print("[4]      - Extract username list from standard windows sam file (duplicates removed)")
@@ -49,7 +49,8 @@ while selection != "q":
 
         #if email has been selected
         if selection == "1":
-                #extracting email addresses from a file
+                #extracting email addresses from a standard text file
+                print("\n[+]Extracting email addresses from a standard text file")
                 regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
                 #collect the inputs
                 filename = input("\n[?] Please enter filename to extract from: ")
