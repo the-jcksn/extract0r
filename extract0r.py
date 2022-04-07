@@ -1,5 +1,5 @@
 #extract0r - a tool for automating the boring daily copy and paste text extractions. Written by the-jcksn, to save me time when colleagues give me the tasks they don't want to do.
-
+import re
 #defining the functions
 
 #continue after extraction or quit
@@ -34,19 +34,50 @@ print("                         github.com/the-jcksn\n")
 selection = ""
 while selection != "q":
         print("[+] Please choose from the following:\n")
-        print("[1]      - Extract IP addresses from standard nmap output file")
-        print("[2]      - Extract the LM hashes from standard windows sam file")
-        print("[3]      - Extract username list from standard windows sam file (duplicates removed)")
-        print("[4]      - Extract all unique lines from any file (remove duplicate lines)")
+        print("[1]      - Extract email addresses from any file")
+        print("[2]      - Extract IP addresses from standard nmap output file")
+        print("[3]      - Extract the LM hashes from standard windows sam file")
+        print("[4]      - Extract username list from standard windows sam file (duplicates removed)")
+        print("[5]      - Extract all unique lines from any file (remove duplicate lines)")
         print("[q]      - Quit extract0r")
-        selection = input("Please choose option (1 - 4) or 'q' to quit: ")
+        selection = input("Please choose option (1 - 5) or 'q' to quit: ")
         # checking that selection has been made appropriately
-        while selection != "1" and selection != "2" and selection != "3" and selection != "4" and selection != "q":
+        while selection != "1" and selection != "2" and selection != "3" and selection != "4" and selection != "5" and selection != "q":
                 print("[!] Invalid selection: Please try again")
-                selection = input("Please choose option (1 - 4) or 'q' to quit : ")
+                selection = input("Please choose option (1 - 5) or 'q' to quit : ")
+
+
+        #if email has been selected
+        if selection == "1":
+                #extracting email addresses from a file
+                regex = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+                #collect the inputs
+                filename = input("\n[?] Please enter filename to extract from: ")
+                input_file = open(filename, "r")
+                output_file = input("[?] Please choose a filename for the output: ")
+                #intialising empty lists
+                emails_dupes = []
+                emails_no_dupes = []
+                #split into individual strings and check string conformity to regex
+                for line in input_file:
+                        for string in line.split():
+                                if(re.fullmatch(regex, string)):
+                                        emails_dupes.append(string)
+                #check for duplicates
+                for i in emails_dupes:
+                        if i not in emails_no_dupes:
+                                emails_no_dupes.append(i)
+                print ("\n[+]",len(emails_no_dupes),"unique email addresses found.")
+                #write email addresses to output file and perform end of extraction functions
+                for email in emails_no_dupes:
+                        with open(output_file, "a") as output:
+                                output.write(email)
+                                output.write("\n")
+                extraction_end(output_file)
+                selection = more_extractions()
 
         #if ip extract has been selected
-        if selection == "1":
+        elif selection == "2":
                 print("\n[+]Extracting the IP addresses from nmap -oN output file")
                 #gathering filename inputs
                 filename = input("\n[?] Please enter filename to extract from: ")
@@ -97,7 +128,7 @@ while selection != "q":
                 selection = more_extractions()
 
         #if selection is lm hashes
-        elif selection == "2":
+        elif selection == "3":
                 print("\n[+] Extracting the LM hashes from a sam file")
                 #gather inputs
                 filename = input("\n[?] Please enter filename to extract from: ")
@@ -128,7 +159,7 @@ while selection != "q":
                 selection = more_extractions()
                 
         #if selection is username from sam file
-        elif selection == "3":
+        elif selection == "4":
                 print("\n[+] Extracting the Usernames from a sam file")
                 #collect the inputs
                 filename = input("\n[?] Please enter filename to extract from: ")
@@ -162,7 +193,7 @@ while selection != "q":
                 selection = more_extractions()
 
         #if selection is unique lines
-        elif selection == "4":
+        elif selection == "5":
                 print("\n[+] Extracting unique lines from file (removing duplicate lines)")
                 #collect the inputs
                 filename = input("\n[?] Please enter filename to extract from: ")
